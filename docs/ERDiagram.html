@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SwiftRoute ER Diagram</title>
+<style>
+  body { margin: 0; background: #0a0e1a; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 30px; }
+  h1 { color: #00d4ff; font-size: 22px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px; }
+  p  { color: #556080; font-size: 13px; margin-bottom: 30px; }
+  svg { max-width: 100%; }
+</style>
+</head>
+<body>
+<h1>⚡ SwiftRoute — Entity Relationship Diagram</h1>
+<p>Pulse Command Center · Database Schema v1.0</p>
+
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" width="900">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#3a4f72"/>
+    </marker>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background grid -->
+  <rect width="900" height="600" fill="#0a0e1a"/>
+  <defs><pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1a2235" stroke-width="0.5"/>
+  </pattern></defs>
+  <rect width="900" height="600" fill="url(#grid)"/>
+
+  <!-- ══════ USERS Table ══════ -->
+  <g transform="translate(30, 200)">
+    <rect width="180" height="230" rx="8" fill="#1a2235" stroke="#00d4ff" stroke-width="1.5" filter="url(#glow)"/>
+    <rect width="180" height="36" rx="8" fill="#00d4ff" opacity="0.9"/>
+    <rect width="180" height="10" y="26" fill="#00d4ff" opacity="0.9"/>
+    <text x="90" y="24" text-anchor="middle" fill="#000" font-weight="700" font-size="13" letter-spacing="1">USERS</text>
+    <!-- Fields -->
+    <text x="12" y="58"  fill="#e8eaf0" font-size="11">🔑 Id (PK, VARCHAR 36)</text>
+    <text x="12" y="78"  fill="#e8eaf0" font-size="11">   Username (UNIQUE)</text>
+    <text x="12" y="98"  fill="#e8eaf0" font-size="11">   PasswordHash</text>
+    <text x="12" y="118" fill="#e8eaf0" font-size="11">   FullName</text>
+    <text x="12" y="138" fill="#e8eaf0" font-size="11">   Email</text>
+    <text x="12" y="158" fill="#556080" font-size="11">   Role (enum)</text>
+    <text x="12" y="178" fill="#556080" font-size="11">   IsActive</text>
+    <text x="12" y="198" fill="#556080" font-size="11">   CreatedAt</text>
+    <!-- dividers -->
+    <line x1="0" y1="66" x2="180" y2="66" stroke="#2a3a5c" stroke-width="0.5"/>
+  </g>
+
+  <!-- ══════ DRIVERS Table ══════ -->
+  <g transform="translate(30, 30)">
+    <rect width="180" height="210" rx="8" fill="#1a2235" stroke="#00e676" stroke-width="1.5"/>
+    <rect width="180" height="36" rx="8" fill="#00e676" opacity="0.85"/>
+    <rect width="180" height="10" y="26" fill="#00e676" opacity="0.85"/>
+    <text x="90" y="24" text-anchor="middle" fill="#000" font-weight="700" font-size="13" letter-spacing="1">DRIVERS</text>
+    <text x="12" y="58"  fill="#e8eaf0" font-size="11">🔑 Id (PK, VARCHAR 36)</text>
+    <text x="12" y="78"  fill="#e8eaf0" font-size="11">   Name</text>
+    <text x="12" y="98"  fill="#e8eaf0" font-size="11">   LicenseClass</text>
+    <text x="12" y="118" fill="#e8eaf0" font-size="11">   LicenseExpiry</text>
+    <text x="12" y="138" fill="#556080" font-size="11">   Status (enum)</text>
+    <text x="12" y="158" fill="#556080" font-size="11">   Phone / Email</text>
+    <text x="12" y="178" fill="#556080" font-size="11">   UpdatedAt</text>
+    <text x="12" y="198" fill="#ff1744" font-size="11">⏱ RowVersion (CONCURRENCY)</text>
+    <line x1="0" y1="66" x2="180" y2="66" stroke="#2a3a5c" stroke-width="0.5"/>
+  </g>
+
+  <!-- ══════ VEHICLES Table ══════ -->
+  <g transform="translate(360, 30)">
+    <rect width="200" height="230" rx="8" fill="#1a2235" stroke="#ffab00" stroke-width="1.5"/>
+    <rect width="200" height="36" rx="8" fill="#ffab00" opacity="0.85"/>
+    <rect width="200" height="10" y="26" fill="#ffab00" opacity="0.85"/>
+    <text x="100" y="24" text-anchor="middle" fill="#000" font-weight="700" font-size="13" letter-spacing="1">VEHICLES</text>
+    <text x="12" y="58"  fill="#e8eaf0" font-size="11">🔑 VIN (PK, VARCHAR 50)</text>
+    <text x="12" y="78"  fill="#e8eaf0" font-size="11">   Model</text>
+    <text x="12" y="98"  fill="#e8eaf0" font-size="11">   LicenseClass</text>
+    <text x="12" y="118" fill="#e8eaf0" font-size="11">   CurrentOdometer (km)</text>
+    <text x="12" y="138" fill="#e8eaf0" font-size="11">   LastServiceOdometer (km)</text>
+    <text x="12" y="158" fill="#556080" font-size="11">   Status (enum)</text>
+    <text x="12" y="178" fill="#556080" font-size="11">   Notes / UpdatedAt</text>
+    <text x="12" y="198" fill="#ff1744" font-size="11">⏱ RowVersion (CONCURRENCY)</text>
+    <text x="12" y="218" fill="#ffab00" font-size="10">📐 KmSinceService ≥ 10000 → auto-flag</text>
+    <line x1="0" y1="66" x2="200" y2="66" stroke="#2a3a5c" stroke-width="0.5"/>
+  </g>
+
+  <!-- ══════ ASSIGNMENTS Table ══════ -->
+  <g transform="translate(330, 280)">
+    <rect width="240" height="270" rx="8" fill="#1a2235" stroke="#448aff" stroke-width="2"/>
+    <rect width="240" height="36" rx="8" fill="#448aff" opacity="0.9"/>
+    <rect width="240" height="10" y="26" fill="#448aff" opacity="0.9"/>
+    <text x="120" y="24" text-anchor="middle" fill="#fff" font-weight="700" font-size="13" letter-spacing="1">ASSIGNMENTS</text>
+    <text x="12" y="58"  fill="#e8eaf0" font-size="11">🔑 Id (PK, INT AUTO_INCREMENT)</text>
+    <text x="12" y="78"  fill="#448aff" font-size="11">🔗 DriverId (FK → Drivers)</text>
+    <text x="12" y="98"  fill="#448aff" font-size="11">🔗 VehicleVIN (FK → Vehicles)</text>
+    <text x="12" y="118" fill="#448aff" font-size="11">🔗 CreatedByUserId (FK → Users)</text>
+    <text x="12" y="138" fill="#e8eaf0" font-size="11">   Route / Origin / Destination</text>
+    <text x="12" y="158" fill="#e8eaf0" font-size="11">   ScheduledStart / ScheduledEnd</text>
+    <text x="12" y="178" fill="#556080" font-size="11">   ActualStart / ActualEnd</text>
+    <text x="12" y="198" fill="#556080" font-size="11">   Status (enum)</text>
+    <text x="12" y="218" fill="#556080" font-size="11">   CreatedAt / UpdatedAt</text>
+    <text x="12" y="238" fill="#ff1744" font-size="11">⏱ RowVersion (CONCURRENCY)</text>
+    <text x="12" y="258" fill="#556080" font-size="10">📐 IDX: (DriverId,Status) (VIN,Status)</text>
+    <line x1="0" y1="66" x2="240" y2="66" stroke="#2a3a5c" stroke-width="0.5"/>
+  </g>
+
+  <!-- ══════ MAINTENANCE_LOGS Table ══════ -->
+  <g transform="translate(640, 200)">
+    <rect width="230" height="230" rx="8" fill="#1a2235" stroke="#ff4081" stroke-width="1.5"/>
+    <rect width="230" height="36" rx="8" fill="#ff4081" opacity="0.85"/>
+    <rect width="230" height="10" y="26" fill="#ff4081" opacity="0.85"/>
+    <text x="115" y="24" text-anchor="middle" fill="#fff" font-weight="700" font-size="13" letter-spacing="1">MAINTENANCE_LOGS</text>
+    <text x="12" y="58"  fill="#e8eaf0" font-size="11">🔑 Id (PK, INT AUTO_INCREMENT)</text>
+    <text x="12" y="78"  fill="#ff4081" font-size="11">🔗 VehicleVIN (FK → Vehicles)</text>
+    <text x="12" y="98"  fill="#ff4081" font-size="11">🔗 PerformedByUserId (FK → Users)</text>
+    <text x="12" y="118" fill="#e8eaf0" font-size="11">   Description</text>
+    <text x="12" y="138" fill="#e8eaf0" font-size="11">   OdometerAtService (km)</text>
+    <text x="12" y="158" fill="#556080" font-size="11">   ServiceDate</text>
+    <text x="12" y="178" fill="#556080" font-size="11">   Cost (DECIMAL 10,2)</text>
+    <text x="12" y="198" fill="#556080" font-size="11">   Parts (optional)</text>
+    <text x="12" y="218" fill="#00e676" font-size="10">📐 Restores Vehicle → Active on create</text>
+    <line x1="0" y1="66" x2="230" y2="66" stroke="#2a3a5c" stroke-width="0.5"/>
+  </g>
+
+  <!-- ══════ RELATIONSHIP LINES ══════ -->
+  <!-- Drivers 1──* Assignments -->
+  <line x1="210" y1="100" x2="330" y2="370" stroke="#3a4f72" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="240" y="220" fill="#556080" font-size="10" transform="rotate(-55,240,220)">1 : many</text>
+
+  <!-- Vehicles 1──* Assignments -->
+  <line x1="460" y1="260" x2="450" y2="280" stroke="#3a4f72" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="462" y="272" fill="#556080" font-size="10">1:M</text>
+
+  <!-- Users 1──* Assignments -->
+  <line x1="210" y1="340" x2="330" y2="400" stroke="#3a4f72" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="250" y="380" fill="#556080" font-size="10">creates</text>
+
+  <!-- Vehicles 1──* MaintenanceLogs -->
+  <line x1="560" y1="120" x2="640" y2="260" stroke="#3a4f72" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="580" y="190" fill="#556080" font-size="10">1 : many</text>
+
+  <!-- Users 1──* MaintenanceLogs -->
+  <line x1="210" y1="380" x2="640" y2="320" stroke="#3a4f72" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="420" y="340" fill="#556080" font-size="10">performs</text>
+
+  <!-- Legend -->
+  <g transform="translate(30, 490)">
+    <text x="0"   y="0" fill="#00d4ff" font-size="12" font-weight="700">LEGEND</text>
+    <rect x="0" y="10" width="12" height="12" fill="#00e676" rx="2"/>
+    <text x="18" y="21" fill="#8899bb" font-size="11">PK = Primary Key</text>
+    <rect x="120" y="10" width="12" height="12" fill="#448aff" rx="2"/>
+    <text x="138" y="21" fill="#8899bb" font-size="11">FK = Foreign Key</text>
+    <rect x="240" y="10" width="12" height="12" fill="#ff1744" rx="2"/>
+    <text x="258" y="21" fill="#8899bb" font-size="11">RowVersion = Concurrency Token</text>
+    <line x1="500" y1="16" x2="530" y2="16" stroke="#3a4f72" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+    <text x="538" y="21" fill="#8899bb" font-size="11">Relationship</text>
+  </g>
+</svg>
+</body>
+</html>

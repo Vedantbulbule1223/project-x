@@ -1,0 +1,34 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.vs/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node / Vite
+frontend/node_modules/
+frontend/dist/
+
+# .NET build artifacts
+**/bin/
+**/obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Environment / local overrides
+.env
+.env.*
+backend/SwiftRoute.API/appsettings.Development.json
+
+# Test / coverage
+coverage/
+TestResults/
